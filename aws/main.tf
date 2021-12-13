@@ -1,6 +1,3 @@
-provider "aws" {
-  region = var.region
-}
 
 resource "aws_config_configuration_recorder" "foo" {
   name     = "example"
