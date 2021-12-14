@@ -51,8 +51,9 @@ pipeline {
                     url: 'https://github.com/gbrembati/terraform-iac-scanning.git'
                 }
                 sh '''
-                    terraform --version
                     cd iac-code/aws
+
+                    terraform --version
                     terraform init
                     terraform validate 
                 '''
@@ -80,7 +81,7 @@ pipeline {
             }
             steps {
                 sh '''
-                   export AWS_ACCESS_KEY_ID=$AWS_CREDS_USR
+                    export AWS_ACCESS_KEY_ID=$AWS_CREDS_USR
                     export AWS_SECRET_ACCESS_KEY=$AWS_CREDS_PSW
                     export AWS_DEFAULT_REGION="eu-west-1"
 
@@ -99,16 +100,14 @@ pipeline {
         stage('IaC-Provider-Cleanup') {
             steps {
                 sh '''
-                    cd iac-code/aws
                     du -sh
+                    rm plan-file.json
                     rm -r .terraform
                     rm -r .terraform.lock.hcl
-                    rm -r plan-file.json
                     du -sh
                 '''
             }
         }
     }
 }
-
 ```
