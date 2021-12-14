@@ -40,7 +40,7 @@ This pipeline is structured to perform four simple steps.
 3. **Terraform Execution Plan Scan**: Scan the Terraform execution plan against Check Point managed *Terraform AWS CIS Foundations*
 4. **Cleanup of the files**: It cleans the file created by the pipeline
 
-```jenkins
+```pipeline
 pipeline {
     agent any
     stages {
